@@ -4,7 +4,7 @@ import Datauri from 'datauri';
 const dUri = new Datauri();
 
 const storage = multer.memoryStorage();
-const upload = multer({ storage: storage }.single(image));
+const upload = multer({ storage: storage }).single('image');
 
 //pasar el buffer del memorystorage a un base64 encoded string
 const dataUri = req => 
