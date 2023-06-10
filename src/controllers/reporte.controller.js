@@ -1,6 +1,9 @@
 import { Router } from 'express';
 import multer from "multer";
 import Formdata from 'form-data'
+import {cloudinaryUpload} from '../services/cloudinary.service.js'
+//import { dataUri } from '../middlewares/multer.js';
+
 
 
 
@@ -9,9 +12,14 @@ const router = Router ();
 
 const getResult = async (req, res) => {
 
+  const image = req.file;
+
+  const fileFormat = image.mimetype.split('/')[1]
+  const base64 = Buffer.from(image.buffer).toString("base64")
+  const imageDetails = await cloudinaryUpload(base64, fileFormat)
+  res.send('Se ha subido correctamente a cloudinary', imageDetails)
 
   const form = new FormData();
-  const image = req.file;
   form.append('file', image.buffer, image.originalname);        
 
   const response = await axios.post(url, form, {
@@ -28,4 +36,4 @@ const getResult = async (req, res) => {
 }
 
 
-export default getResult
+export {getResult}

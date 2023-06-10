@@ -1,16 +1,17 @@
 import express from "express";
 import reporteRouter from "./routes/reporte.routes.js";
 import { cloudinaryConfig } from './server/config/cloudinaryConfig.js'
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 
 app.use(express.json())
-app.use("/analysis", reporteRouter)
+app.use("/api", reporteRouter)
 app.use('*', cloudinaryConfig);
-app.set("port", 3000);
+app.set("port", 8080);
 
 
 
-app.listen (app.get("port"), () => {
-    console.log ("Server is running on port", app.get ("port"));
-})
+
+export default app;
