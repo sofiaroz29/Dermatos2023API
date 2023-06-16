@@ -17,15 +17,21 @@ const getResult = async (req, res) => {
 
   const image = req.file;
 
-  const fileFormat = image.mimetype.split('/')[1]
-  const base64 = Buffer.from(image.buffer).toString("base64")
-  const imageDetails = await cloudinaryUpload(base64, fileFormat)
+  
+
+  const fileFormat = image.mimetype.split('/')[1];
+  const base64 = Buffer.from(image.buffer).toString("base64");
+  const imageDetails = await cloudinaryUpload(base64, fileFormat);
+  
   if (imageDetails){
   //  console.log(dotenv.config())
-   console.log('Se ha subido correctamente a cloudinary', imageDetails)
+   console.log('Se ha subido correctamente a cloudinary', imageDetails.secure_url);
+   
   } 
 
-  const form = {"image": base64, "imagename": image.originalname};     
+  
+
+  const form = {"image": base64, "imagename": image.originalname, "image_url": imageDetails.secure_url};     
   
 
   const response = await axios({

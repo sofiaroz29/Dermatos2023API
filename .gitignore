@@ -131,3 +131,4 @@ dist
 #virtual environment
 /python/venv
 __pycache__
+/python/Dermatos/modelo
