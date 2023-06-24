@@ -8,7 +8,7 @@ import requests
 
 altura, longitud = 100, 100
 # Carga el modelo y los pesos
-model = tf.keras.models.load_model('././Dermatos/modelo/modelo.h5')
+model = tf.keras.models.load_model('./Dermatos/modelo/modelo.h5')
 model.load_weights('././Dermatos/modelo/pesos.h5')
 
 # Define una función para realizar la predicción

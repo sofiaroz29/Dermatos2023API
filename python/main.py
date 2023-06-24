@@ -15,13 +15,13 @@ def root():
 
 
 @app.post("/upload")
-def result(image: str = Form(...), imagename: str = Form(...), image_url:  str = Form(...)):
+def result(image_url:  str = Form(...)):
     # image_as_bytes = str.encode(image)  # convert string to bytes
-    img_recovered = base64.b64decode(image)  # decode base64string
+    # img_recovered = base64.b64decode(image)  # decode base64string
     
     try:
-        print(type (image))
-        print(type(img_recovered))
+        # print(type (image))
+        # print(type(img_recovered))
 
         # imgPath = "./image/" + imagename
         # with open(imgPath, "wb") as f:
